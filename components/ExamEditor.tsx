@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { useRouter } from "next/navigation";
 import { QuestionCard, Question } from "./QuestionCard";
 
 // ─── Mock data ────────────────────────────────────────────────────────────────
@@ -68,6 +69,7 @@ type Props = {
 };
 
 export function ExamEditor({ onExport }: Props) {
+  const router = useRouter();
   const [questions, setQuestions] = useState<Question[]>(MOCK_QUESTIONS);
   const [regenerating, setRegenerating] = useState<string | null>(null);
 
@@ -182,7 +184,7 @@ export function ExamEditor({ onExport }: Props) {
       <footer className="fixed bottom-0 left-0 right-0 z-20 border-t border-border bg-background/95 backdrop-blur-sm px-5 py-4">
         <div className="max-w-2xl mx-auto">
           <button
-            onClick={onExport}
+            onClick={() => { onExport?.(); router.push("/export"); }}
             disabled={questions.length === 0}
             aria-disabled={questions.length === 0}
             className={[

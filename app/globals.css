@@ -17,6 +17,7 @@
   --color-danger-muted: var(--danger-muted);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
+  --font-serif: "Georgia", "Times New Roman", serif;
   --radius: 0.75rem;
 }
 
