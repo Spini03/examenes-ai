@@ -1,11 +1,13 @@
 "use client";
 
 import { useState } from "react";
+import { useRouter } from "next/navigation";
 import { DropZone } from "./DropZone";
 import { TemplateSelector, Template } from "./TemplateSelector";
 import { LoadingOverlay } from "./LoadingOverlay";
 
 export function LandingPage() {
+  const router = useRouter();
   const [file, setFile] = useState<File | null>(null);
   const [description, setDescription] = useState("");
   const [template, setTemplate] = useState<Template>("universitaria");
@@ -24,8 +26,7 @@ export function LandingPage() {
     setLoadingStep(2);
     await new Promise((res) => setTimeout(res, 2200));
 
-    // TODO: navigate to editor with generated exam
-    setLoading(false);
+    router.push("/editor");
   };
 
   return (
